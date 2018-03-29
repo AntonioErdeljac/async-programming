@@ -27,10 +27,37 @@ function getStockSymbols(stocks) {
 //   return results;
 // }
 
-let symbols = getStockSymbols([
+function getStocksOver(stocks, minPrice) {
+  // let results = [];
+
+  // stocks.forEach(stock => {
+  //   if(stock.price >= minPrice) {
+  //     results.push(stock);
+  //   }
+  // });
+
+  return stocks.filter(function(stock) {
+    return stock.price >= minPrice;
+  });
+}
+
+// Array.prototype.filter = function(predicate) {
+//   let results = [];
+
+//   this.forEach(function(item) {
+//     if(predicate(item)) {
+//       results.push(item);
+//     }
+//   });
+
+//   return results;
+// };
+
+let expensiveStocks = getStocksOver([
   { symbol: "XFX", price: 240.22, volume: 23432 },
   { symbol: "TNZ", price: 120.22, volume: 432 },
   { symbol: "JXJ", price: 530.22, volume: 22 },
-]);
+], 150);
 
-console.log(JSON.stringify(symbols));
+
+console.log(expensiveStocks);
