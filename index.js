@@ -53,11 +53,26 @@ function getStocksOver(stocks, minPrice) {
 //   return results;
 // };
 
-let expensiveStocks = getStocksOver([
+
+
+let stocks = [
   { symbol: "XFX", price: 240.22, volume: 23432 },
   { symbol: "TNZ", price: 120.22, volume: 432 },
   { symbol: "JXJ", price: 530.22, volume: 22 },
-], 150);
+];
+
+const filteredStockSymbols =
+  stocks.
+    filter((stock) => {
+      return stock.price >= 150;
+    }).
+    map((stock) => {
+      return stock.symbol;
+    });
+
+filteredStockSymbols.forEach((stockSymbol) => {
+  console.log(stockSymbol);
+})
 
 
-console.log(expensiveStocks);
+// console.log(expensiveStocks);
