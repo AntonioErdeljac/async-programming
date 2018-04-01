@@ -70,9 +70,44 @@ const filteredStockSymbols =
       return stock.symbol;
     });
 
-filteredStockSymbols.forEach((stockSymbol) => {
-  console.log(stockSymbol);
+// filteredStockSymbols.forEach((stockSymbol) => {
+//   console.log(stockSymbol);
+// })
+
+let exchanges = [
+  [
+    { symbol: "XFX", price: 240.22, volume: 23432 },
+    { symbol: "TNZ", price: 120.22, volume: 432 },
+    { symbol: "JXJ", price: 530.22, volume: 22 },
+  ],
+  [
+    { symbol: "PTPT", price: 213.62, volume: 432 },
+    { symbol: "NLL", price: 460.42, volume: 4132 },
+    { symbol: "IVV", price: 340.7, volume: 32 },
+  ],
+];
+
+Array.prototype.concatAll = function() {
+  let results = [];
+
+  this.forEach((function(subArray) {
+    subArray.forEach((function(item) {
+      results.push(item);
+    }))
+  }));
+
+  return results;
+}
+
+exchanges.concatAll().forEach((stock) => {
+  console.log(stock);
 })
+
+// exchanges.forEach((exchange) => {
+//   exchange.forEach((stock) => {
+//     console.log(JSON.stringify(stock));
+//   });
+// });
 
 
 // console.log(expensiveStocks);
