@@ -1,21 +1,21 @@
-function getStockSymbols(stocks) {
-  // let symbols = [];
+// function getStockSymbols(stocks) {
+//   // let symbols = [];
 
-  // stocks.forEach((stock) => {
-  //   symbols.push(stock.symbol);
-  // })
+//   // stocks.forEach((stock) => {
+//   //   symbols.push(stock.symbol);
+//   // })
 
-  // for(counter = 0; counter < stocks.length; counter++) {
-  //   stock = stocks[counter];
-  //   symbols.push(stock.symbol);
-  // }
+//   // for(counter = 0; counter < stocks.length; counter++) {
+//   //   stock = stocks[counter];
+//   //   symbols.push(stock.symbol);
+//   // }
 
-  return stocks.map((stock) => {
-    return stock.symbol;
-  })
+//   return stocks.map((stock) => {
+//     return stock.symbol;
+//   })
 
-  return symbols;
-}
+//   return symbols;
+// }
 
 // Array.prototype.map = function(projection) {
 //   let results = [];
@@ -27,7 +27,7 @@ function getStockSymbols(stocks) {
 //   return results;
 // }
 
-function getStocksOver(stocks, minPrice) {
+// function getStocksOver(stocks, minPrice) {
   // let results = [];
 
   // stocks.forEach(stock => {
@@ -36,10 +36,10 @@ function getStocksOver(stocks, minPrice) {
   //   }
   // });
 
-  return stocks.filter(function(stock) {
-    return stock.price >= minPrice;
-  });
-}
+//   return stocks.filter(function(stock) {
+//     return stock.price >= minPrice;
+//   });
+// }
 
 // Array.prototype.filter = function(predicate) {
 //   let results = [];
@@ -55,20 +55,20 @@ function getStocksOver(stocks, minPrice) {
 
 
 
-let stocks = [
-  { symbol: "XFX", price: 240.22, volume: 23432 },
-  { symbol: "TNZ", price: 120.22, volume: 432 },
-  { symbol: "JXJ", price: 530.22, volume: 22 },
-];
+// let stocks = [
+//   { symbol: "XFX", price: 240.22, volume: 23432 },
+//   { symbol: "TNZ", price: 120.22, volume: 432 },
+//   { symbol: "JXJ", price: 530.22, volume: 22 },
+// ];
 
-const filteredStockSymbols =
-  stocks.
-    filter((stock) => {
-      return stock.price >= 150;
-    }).
-    map((stock) => {
-      return stock.symbol;
-    });
+// const filteredStockSymbols =
+//   stocks.
+//     filter((stock) => {
+//       return stock.price >= 150;
+//     }).
+//     map((stock) => {
+//       return stock.symbol;
+//     });
 
 // filteredStockSymbols.forEach((stockSymbol) => {
 //   console.log(stockSymbol);
@@ -99,7 +99,14 @@ Array.prototype.concatAll = function() {
   return results;
 }
 
-exchanges.concatAll().forEach((stock) => {
+const stocks =
+  exchanges.map((exchange) => {
+    return exchange.stocks.filter((stock) => {
+      return stock.price >= 100.00;
+    });
+  }).concatAll();
+
+stocks.forEach((stock) => {
   console.log(stock);
 })
 
